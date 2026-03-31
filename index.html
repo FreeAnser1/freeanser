@@ -10,7 +10,12 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="dns-prefetch" href="https://esm.sh">
-  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800;900&display=swap" rel="stylesheet">
+  <!-- Asynchronous Google Font Loading -->
+  <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800;900&display=swap">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800;900&display=swap" media="print" onload="this.media='all'">
+  <noscript>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800;900&display=swap">
+  </noscript>
   <style>
     :root {
       --bg: #F5F2E6;
@@ -265,7 +270,8 @@
     /* Fix spacing specifically for Hero to keep everything above the fold */
     #hero {
       padding-top: var(--header-h);
-      padding-bottom: clamp(40px, 8vh, 60px); /* Responsive space for bottom ribbon */
+      padding-bottom: clamp(40px, 8vh, 60px);
+      /* Responsive space for bottom ribbon */
       justify-content: center;
       min-height: 100vh;
       max-height: 100vh;
@@ -329,7 +335,8 @@
       font-size: clamp(3.5rem, 12vw, 10rem);
       font-weight: 900;
       font-family: sans-serif;
-      color: rgba(0, 0, 0, 0.05); /* Slightly darker base visibility */
+      color: rgba(0, 0, 0, 0.05);
+      /* Slightly darker base visibility */
       line-height: 1;
       transition: all 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275);
       z-index: 0;
@@ -338,7 +345,8 @@
     }
 
     .step-card:hover .step-num {
-      color: rgba(255, 122, 0, 0.15); /* Much more visible orange accent */
+      color: rgba(255, 122, 0, 0.15);
+      /* Much more visible orange accent */
       bottom: -0.5rem;
       transform: rotate(-5deg) scale(1.1);
     }
@@ -680,7 +688,8 @@
         min-height: 0;
         order: 2;
         width: 100%;
-        max-height: 35vh; /* Restricted to leave room for text/ribbons */
+        max-height: 35vh;
+        /* Restricted to leave room for text/ribbons */
       }
 
       .hero-image {
@@ -696,12 +705,14 @@
     @media (max-width: 480px) {
       :root {
         --ribbon-h: 28px;
-        --nav-h: 46px; /* Slightly smaller for tight mobile screens */
+        --nav-h: 46px;
+        /* Slightly smaller for tight mobile screens */
       }
 
       #hero {
         padding-top: var(--header-h);
-        padding-bottom: 45px; /* Fixed space for bottom ribbon ticker */
+        padding-bottom: 45px;
+        /* Fixed space for bottom ribbon ticker */
       }
 
       .hero h1 {
@@ -897,7 +908,7 @@
         }
       };
 
-    return html`
+      return html`
     <section id="lead-form" class="lead-section">
       <div class="blob blob-2"></div>
       <div class="form-wrapper">
