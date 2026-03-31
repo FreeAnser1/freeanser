@@ -651,12 +651,13 @@
       .hero-grid {
         grid-template-columns: 1fr;
         text-align: center;
-        gap: 0; 
+        gap: 0;
         display: flex;
         flex-direction: column;
         justify-content: flex-start;
         width: 100%;
-        max-height: calc(100vh - var(--header-h) - 80px); /* Strictly capped for fold */
+        flex: 1; /* Take up available space but allow ribbon to fit */
+        min-height: 0; 
       }
 
       .hero-text-content {
@@ -713,8 +714,10 @@
 
       #hero {
         padding-top: var(--header-h);
-        padding-bottom: 60px; /* Protected space for bottom ribbon ticker */
-        justify-content: flex-start;
+        padding-bottom: 10px; /* Minimal padding for the ribbon */
+        justify-content: space-between; /* Force ribbon to bottom */
+        display: flex;
+        flex-direction: column;
       }
       
       .hero-badge {
@@ -745,9 +748,14 @@
       }
 
       .hero-ribbon {
-        height: 32px;
-        font-size: 0.8rem; /* Increased to ~13px minimum */
-        bottom: 8px; /* Lifted slightly for better visibility */
+        position: relative; /* Switch to flow positioning */
+        bottom: 0;
+        height: 36px;
+        margin-top: auto; /* Push it to the very bottom of the flex container */
+        font-size: 0.8rem;
+        z-index: 100;
+        width: 100vw;
+        left: 0;
       }
 
       .steps-grid {
