@@ -10,9 +10,9 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="dns-prefetch" href="https://esm.sh">
-  <!-- Accelerated Font Loading for LCP -->
-  <link rel="preload" as="style" fetchpriority="high" href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800;900&display=swap">
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800;900&display=swap" media="print" onload="this.media='all'">
+  <!-- Zero-Delay Font Loading for LCP -->
+  <link rel="preload" as="style" fetchpriority="high" href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800;900&display=optional">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800;900&display=optional" media="all">
   <noscript>
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800;900&display=swap">
   </noscript>
@@ -651,12 +651,12 @@
       .hero-grid {
         grid-template-columns: 1fr;
         text-align: center;
-        gap: 0; /* Minimized to save height */
+        gap: 0; 
         display: flex;
         flex-direction: column;
-        justify-content: flex-start; /* Pulled up */
+        justify-content: flex-start;
         width: 100%;
-        max-height: calc(100vh - var(--header-h) - 60px);
+        max-height: calc(100vh - var(--header-h) - 80px); /* Strictly capped for fold */
       }
 
       .hero-text-content {
@@ -712,9 +712,14 @@
       }
 
       #hero {
-        padding-top: var(--header-h); /* Content now starts exactly under nav */
-        padding-bottom: 50px; 
-        justify-content: flex-start; /* Push content to top, ribbons to bottom */
+        padding-top: var(--header-h);
+        padding-bottom: 60px; /* Protected space for bottom ribbon ticker */
+        justify-content: flex-start;
+      }
+      
+      .hero-badge {
+        margin-top: 15px; /* Added gap under navigation */
+        margin-bottom: 0.5rem;
       }
 
       .hero h1 {
@@ -728,8 +733,9 @@
       }
 
       .hero-image-wrapper {
-        max-height: 20vh; /* Aggressive reduction for guaranteed fit */
-        margin-top: 5px;
+        max-height: 20vh;
+        margin-top: 8px;
+        margin-bottom: 20px; /* Added padding under image */
       }
 
       .hero-image {
