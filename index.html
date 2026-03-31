@@ -870,15 +870,20 @@
         e.preventDefault();
         setIsSubmitting(true);
 
-        const SCRIPT_URL = https://script.google.com/macros/s/AKfycbwkCxLmVQRaKFdMXqlUTcaex1pAzIr5Cx9d6Bt0_K0-8ucJgD0N9vZxUCW8PhrhYLGJTA/exec;
+        const SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbwkCxLmVQRaKFdMXqlUTcaex1pAzIr5Cx9d6Bt0_K0-8ucJgD0N9vZxUCW8PhrhYLGJTA/exec';
 
         try {
           if (SCRIPT_URL && SCRIPT_URL.includes('/macros/s/')) {
+            // Using URLSearchParams for a 'simple' request that avoids extra auth checks in many browsers
+            const formData = new URLSearchParams();
+            formData.append('email', email);
+            formData.append('link', link);
+            formData.append('date', new Date().toLocaleString());
+
             await fetch(SCRIPT_URL, {
               method: 'POST',
               mode: 'no-cors',
-              headers: { 'Content-Type': 'application/json' },
-              body: JSON.stringify({ email, link, date: new Date().toLocaleString() })
+              body: formData
             });
           }
           onOpenModal();
