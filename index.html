@@ -781,7 +781,41 @@
 </head>
 
 <body>
-  <div id="root"></div>
+  <div id="root">
+    <!-- Static Bootstrap (LCP Optimization) -->
+    <div id="root-container">
+      <a href="#lead-form" class="ribbon">
+        <div class="ribbon-track">
+          <span class="ribbon-item">Grab your Free Digital Audit now!</span>
+          <span class="ribbon-item">Grab your Free Digital Audit now!</span>
+          <span class="ribbon-item">Grab your Free Digital Audit now!</span>
+        </div>
+      </a>
+      <nav class="nav-pill">
+        <a href="#hero" class="nav-logo">Free<span>Anser</span></a>
+        <a href="#lead-form" class="nav-cta">Free Digital Presence Audit!</a>
+      </nav>
+      <section id="hero" class="hero" style="min-height: 100vh; height: 100vh;">
+        <div class="blob blob-1"></div>
+        <div class="hero-grid">
+          <div class="hero-text-content">
+            <div class="hero-badge">⚡ Maximum ROI</div>
+            <h1>Lets <span>24x</span> your visibility<br/>with our professional writers!</h1>
+            <p>Transform your brand with ultra-optimized content, stunning aesthetics, and a data-driven path to market dominance.</p>
+          </div>
+          <div class="hero-image-wrapper">
+             <img src="writer.png" alt="Writer" class="hero-image" fetchpriority="high" decoding="async">
+          </div>
+        </div>
+        <div class="hero-ribbon">
+          <div class="ribbon-track hero-track">
+            <span class="ribbon-item">Loading live client success stories...</span>
+          </div>
+        </div>
+      </section>
+    </div>
+  </div>
+
   <script type="module">
     import { render } from 'preact';
     import { useState, useEffect, useRef } from 'preact/hooks';
