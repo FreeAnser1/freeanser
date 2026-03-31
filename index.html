@@ -232,7 +232,7 @@
     }
 
     .hero p {
-      font-size: clamp(0.88rem, 2vw, 1.2rem);
+      font-size: clamp(1rem, 2vw, 1.25rem); /* Increased minimum to 16px */
       color: rgba(26, 26, 26, 0.7);
       max-width: 500px;
       line-height: 1.6;
@@ -362,7 +362,7 @@
     }
 
     .step-desc {
-      font-size: clamp(0.85rem, 1.6vw, 1rem);
+      font-size: clamp(0.95rem, 1.8vw, 1.1rem); /* Increased minimum legibility */
       color: rgba(26, 26, 26, 0.7);
       line-height: 1.6;
       position: relative;
@@ -520,7 +520,7 @@
       overflow: hidden;
       z-index: 10;
       font-weight: 400;
-      font-size: clamp(0.72rem, 1.8vw, 1rem);
+      font-size: clamp(0.85rem, 1.8vw, 1.1rem); /* Increased for legibility */
       color: #0474BA;
     }
 
@@ -650,11 +650,12 @@
       .hero-grid {
         grid-template-columns: 1fr;
         text-align: center;
-        gap: 0.5rem;
+        gap: 0.2rem;
         display: flex;
         flex-direction: column;
-        justify-content: center;
+        justify-content: space-between;
         width: 100%;
+        max-height: calc(100vh - var(--header-h) - 60px);
       }
 
       .hero-text-content {
@@ -675,12 +676,12 @@
       }
 
       .hero p {
+        font-size: 1rem; /* Accessibility standard 16px */
         margin-left: auto;
         margin-right: auto;
         margin-bottom: 0.8rem;
-        font-size: 0.9rem;
         max-width: 90%;
-        line-height: 1.4;
+        line-height: 1.5;
       }
 
       .hero-image-wrapper {
@@ -710,9 +711,9 @@
       }
 
       #hero {
-        padding-top: var(--header-h);
-        padding-bottom: 45px;
-        /* Fixed space for bottom ribbon ticker */
+        padding-top: calc(var(--header-h) + 12px); /* Tighter gap under nav */
+        padding-bottom: 52px; /* Protected space for bottom ticker ribbon */
+        justify-content: space-around; /* Efficient space distribution */
       }
 
       .hero h1 {
@@ -721,24 +722,23 @@
       }
 
       .hero p {
-        font-size: 0.8rem;
+        font-size: 0.95rem; /* Tight mobile accessibility */
         margin-bottom: 0.5rem;
-        max-width: 95%;
       }
 
       .hero-image-wrapper {
-        max-height: 28vh;
+        max-height: 25vh; /* Reduced further to ensure fit */
       }
 
       .hero-image {
-        max-height: 28vh;
-        max-width: 85vw;
+        max-height: 25vh;
+        max-width: 80vw;
       }
 
       .hero-ribbon {
-        height: 30px;
-        font-size: 0.7rem;
-        bottom: 4px;
+        height: 32px;
+        font-size: 0.8rem; /* Increased to ~13px minimum */
+        bottom: 8px; /* Lifted slightly for better visibility */
       }
 
       .steps-grid {
@@ -755,9 +755,9 @@
   <script type="importmap">
     {
       "imports": {
-        "react": "https://esm.sh/react@18.2.0",
-        "react-dom/client": "https://esm.sh/react-dom@18.2.0/client",
-        "htm": "https://esm.sh/htm@3.1.1"
+        "preact": "https://esm.sh/preact@10.19.2",
+        "preact/hooks": "https://esm.sh/preact@10.19.2/hooks",
+        "htm": "https://esm.sh/htm@3.1.1/preact?external=preact"
       }
     }
   </script>
@@ -766,11 +766,9 @@
 <body>
   <div id="root"></div>
   <script type="module">
-    import { createElement, useState, useEffect, useRef } from 'react';
-    import { createRoot } from 'react-dom/client';
-    import htm from 'htm';
-
-    const html = htm.bind(createElement);
+    import { render } from 'preact';
+    import { useState, useEffect, useRef } from 'preact/hooks';
+    import { html } from 'htm';
 
     // ============================================
     // COMPONENTS
@@ -1044,8 +1042,7 @@
     // RENDER
     // ============================================
     const container = document.getElementById('root');
-    const root = createRoot(container);
-    root.render(html`<${App} />`);
+    render(html`<${App} />`, container);
   </script>
 </body>
 
